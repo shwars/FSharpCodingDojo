@@ -42,8 +42,8 @@ open System
 open System.IO
 
 // Функция для чтения файла как массива строк
-let read fn = File.ReadAllLines(fn)
-read @"d:\books\wap_1.txt"
+let read fn = File.ReadAllLines(sprintf "%s\%s" __SOURCE_DIRECTORY__ fn)
+read @"data\wap.txt"
 
 // Три абстракции данных к F#: массивы, списки, последовательности
 let array = [|1;2;3;4;5|]
@@ -63,11 +63,11 @@ list |> Seq.length
 [1..5] |> List.fold (fun acc x -> (if acc="" then "" else acc+",")+x.ToString()) ""
 
 // Обрабатываем книгу:
-let book = read @"d:\books\wap_1.txt"
+let book = read @"data\wap.txt"
 
 // Выделяем массив слов, длиннее 3 символов
 let words=
- book |> Array.map (fun s -> s.Split([|' ';';';'.';',';'!';'-';'!';'"'|]))
+ book |> Array.map (fun s -> s.Split([|' ';';';'.';',';'!';'-';'—';'!';'"';')';'(';'/'|]))
       |> Array.concat
       |> Array.filter (fun s -> s.Length>3)
 
@@ -81,28 +81,19 @@ words |> Seq.groupBy (fun s -> s.Length)
 
 
 // Загружаем библиотеку визуализации
-#load @"d:\winapp\lib\fsharp\FSharpChart-0.2\FSharpChart.fsx"
-#load @"d:\winapp\lib\fsharp\FSharpChart-0.2\FSharpChartAutoDisplay.fsx"
+#load @"lib\FSharp.Charting.fsx"
 
-open System.Drawing
-open Samples.Charting
-open Samples.Charting.ChartStyles
-open System.Windows.Forms.DataVisualization.Charting
+open FSharp.Charting
 
 words |> Seq.groupBy (fun s -> s.Length)
       |> Seq.map (fun (n,s) -> (n, Seq.length s))
       |> Seq.sortBy fst
-      |> FSharpChart.Bar
+      |> Chart.Bar
 
 // Строим частотный словарь
 words |> Seq.groupBy (fun s -> s)
       |> Seq.map (fun (n,s) -> (n, Seq.length s))
       |> Seq.sortBy (fun (n,s) -> -s)
       |> Seq.take 5
-      |> FSharpChart.Bar
-
-
-
-
-
+      |> Chart.Bar
 
