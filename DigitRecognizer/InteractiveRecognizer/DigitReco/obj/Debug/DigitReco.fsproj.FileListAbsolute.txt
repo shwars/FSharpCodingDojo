@@ -1,8 +1,0 @@
-D:\TEMP\DigitReco\DigitReco\bin\Debug\DigitReco.XML
-D:\TEMP\DigitReco\DigitReco\bin\Debug\DigitReco.dll
-D:\TEMP\DigitReco\DigitReco\bin\Debug\DigitReco.pdb
-D:\TEMP\DigitReco\DigitReco\bin\Debug\FSharp.Core.dll
-D:\TEMP\DigitReco\DigitReco\bin\Debug\FSharp.Core.xml
-D:\TEMP\DigitReco\DigitReco\bin\Debug\ru\FSharp.Core.resources.dll
-D:\TEMP\DigitReco\DigitReco\obj\Debug\DigitReco.dll
-D:\TEMP\DigitReco\DigitReco\obj\Debug\DigitReco.pdb
