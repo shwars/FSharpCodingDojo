@@ -1,3 +1,5 @@
+
+
 // Простейшие концепции
 let удвоить x = x*2
 let удвоить_вещ x = x*2.
@@ -56,11 +58,19 @@ Seq.length list
 
 list |> Seq.length
 
-
 // Базовые функции работы с данными
 [1..5] |> List.map (fun x->x*2)
+[1..5] |> List.map ((*)2)
+
 [1..5] |> List.filter (fun x->x%2=0)
+let swap f x y = f y x
+[1..5] |> List.filter (swap(%)2>>(=)0)
+
 [1..5] |> List.fold (fun acc x -> (if acc="" then "" else acc+",")+x.ToString()) ""
+
+let sqr x = x*x
+[1..100] |> List.map sqr |> List.sum
+{1..100} |> Seq.map sqr |> Seq.sum
 
 // Обрабатываем книгу:
 let book = read @"data\wap.txt"
@@ -96,4 +106,3 @@ words |> Seq.groupBy (fun s -> s)
       |> Seq.sortBy (fun (n,s) -> -s)
       |> Seq.take 5
       |> Chart.Bar
-
